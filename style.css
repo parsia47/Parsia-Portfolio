@@ -240,6 +240,15 @@ nav a:hover::after {
     background-clip: text;
 }
 
+
+/* Make project card links clickable and remove default link styles */
+.project-link {
+    text-decoration: none; /* removes underline */
+    color: inherit;        /* keeps text color same as card */
+    display: block;        /* makes whole card clickable */
+}
+
+
 /* Projects Grid */
 .projects-grid {
     display: grid;
@@ -476,4 +485,9 @@ nav a:hover::after {
     .section {
         padding: 3rem 1rem;
     }
+
+
+
+
+
 }
