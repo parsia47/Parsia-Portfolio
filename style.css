@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
@@ -11,6 +12,159 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
+
+/* Profile Image Styling */
+.profile-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+    transition: all 0.3s ease;
+    border: 3px solid rgba(0, 212, 255, 0.5);
+}
+
+.profile-image:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 15px 50px rgba(255, 0, 128, 0.4);
+}
+
+/* Light mode styling for profile image */
+body.light .profile-image {
+    border: 3px solid rgba(102, 126, 234, 0.5);
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+}
+
+body.light .profile-image:hover {
+    box-shadow: 0 15px 50px rgba(118, 75, 162, 0.4);
+}
+
+
+
+
+/* Light Mode */
+body.light {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+body.light .animated-bg {
+    background: linear-gradient(45deg, #f5f7fa, #e0e7ff, #c3cfe2, #667eea);
+}
+
+body.light {
+    color: #333;
+}
+
+body.light nav {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+body.light nav a {
+    color: #333;
+}
+
+body.light nav a:hover {
+    color: #667eea;
+}
+
+body.light .hero h1 {
+    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.light .hero p {
+    color: #555;
+}
+
+body.light .section-title {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.light .project-card {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+body.light .project-card h3 {
+    color: #667eea;
+}
+
+body.light .skill-item {
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    color: #333;
+}
+
+body.light .contact-link {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+body.light .laptop-screen {
+    background: #f8f9fa;
+    border: 3px solid #ddd;
+}
+
+body.light .code-animation {
+    background: #ffffff;
+    color: #667eea;
+}
+
+/* Dark Mode (your existing styles stay the same) */
+body.dark {
+    background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+    color: white;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 80px;
+    right: 30px;
+    background: none;
+    border: 2px solid;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.light .theme-toggle {
+    border-color: #333;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dark .theme-toggle {
+    border-color: #ffd700;
+    color: #ffd700;
+    background-color: rgba(42, 42, 42, 0.9);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.15) rotate(15deg);
+}
+
+
+
 
 /* Animated Background */
 .animated-bg {
@@ -38,6 +192,120 @@ body {
         background-position: 0% 50%;
     }
 }
+
+/* Add this to your CSS file */
+
+/* Stars Animation for Dark Mode */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body.dark .stars {
+    opacity: 1;
+}
+
+body.light .stars {
+    opacity: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Shooting stars */
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+    animation: shoot 3s linear infinite;
+    opacity: 0;
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-300px) translateY(300px);
+        opacity: 0;
+    }
+}
+
+/* Moon glow effect */
+body.dark::before {
+    content: '';
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: moonGlow 4s ease-in-out infinite;
+}
+
+@keyframes moonGlow {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+/* Update your animated-bg for dark mode */
+body.dark .animated-bg {
+    background: linear-gradient(45deg, #000000, #0a0a1a, #1a1a2e, #0f1729);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+}
+
+/* Light mode - keep sky/clouds feel */
+body.light .animated-bg {
+    background: linear-gradient(45deg, #87CEEB, #B0E0E6, #E0F6FF, #87CEEB);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+
+
+
+
+
+
+
 
 /* Navigation */
 nav {
