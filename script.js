@@ -150,3 +150,58 @@ window.addEventListener('load', () => {
         typeWriter(heroTitle, originalText, 100);
     }, 1000);
 });
+
+// Dark/Light Mode Toggle
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+const body = document.body;
+
+// Check for saved theme preference, default to light
+const currentTheme = localStorage.getItem('theme') || 'light';
+body.className = currentTheme;
+updateIcon(currentTheme);
+
+// Toggle theme on button click
+themeToggle.addEventListener('click', () => {
+    const newTheme = body.classList.contains('light') ? 'dark' : 'light';
+    body.className = newTheme;
+    localStorage.setItem('theme', newTheme);
+    updateIcon(newTheme);
+});
+
+function updateIcon(theme) {
+    themeIcon.textContent = theme === 'light' ? '🌙' : '☀️';
+}
+
+// Create stars for dark mode
+function createStars() {
+    const starsContainer = document.createElement('div');
+    starsContainer.className = 'stars';
+    document.body.appendChild(starsContainer);
+
+    // Create regular stars
+    for (let i = 0; i < 200; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        starsContainer.appendChild(star);
+    }
+
+    // Create shooting stars
+    for (let i = 0; i < 5; i++) {
+        const shootingStar = document.createElement('div');
+        shootingStar.className = 'shooting-star';
+        shootingStar.style.left = Math.random() * 100 + '%';
+        shootingStar.style.top = Math.random() * 50 + '%';
+        shootingStar.style.animationDelay = Math.random() * 5 + 's';
+        shootingStar.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        starsContainer.appendChild(shootingStar);
+    }
+}
+
+// Initialize stars when page loads
+window.addEventListener('load', createStars);
+
